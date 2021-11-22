@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View" />
+        
+        <variable
+            name="vm"
+            type="com.example.finalplayground.ui.viewmodels.MovieDetailViewModel" />
+
+        <variable
+            name="isLoading"
+            type="Boolean" />
+
+        <variable
+            name="shouldShowUIComponents"
+            type="Boolean" />
+
+        <variable
+            name="item"
+            type="com.example.finalplayground.domain.model.MovieDetail" />
+
+        <variable
+            name="downloadUrl"
+            type="String" />
+    </data>
+
+    
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout 
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ProgressBar
+                android:id="@+id/loading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="@{isLoading ? View.VISIBLE : View.GONE}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/errorText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:text="@string/no_data"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text = "No Data"/>
+            
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/posterImage"
+                android:layout_width="match_parent"
+                android:layout_height="278dp"
+                android:visibility="@{shouldShowUIComponents ? View.VISIBLE : View.GONE}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:downloadUrl="@{downloadUrl}"/>
+
+            <TextView
+                android:id="@+id/movieTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                style="@style/BlackStyle"
+                android:visibility="@{shouldShowUIComponents ? View.VISIBLE : View.GONE}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/posterImage"
+                android:layout_margin="@dimen/std_margin"
+                android:text="@{item.title}"
+                tools:text="Title"/>
+            <TextView
+                android:id="@+id/movieGenre"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                style="@style/BlackStyle"
+                android:visibility="@{shouldShowUIComponents ? View.VISIBLE : View.GONE}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/movieTitle"
+                android:layout_margin="@dimen/std_margin"
+                tools:text="Genre"/>
+            <TextView
+                android:id="@+id/runningTime"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                style="@style/BlackStyle"
+                android:visibility="@{shouldShowUIComponents ? View.VISIBLE : View.GONE}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/movieGenre"
+                android:layout_margin="@dimen/std_margin"
+                tools:text="runningTime"/>
+
+            <TextView
+                android:id="@+id/votingAverageLabel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                style="@style/BlackStyle"
+                android:visibility="@{shouldShowUIComponents ? View.VISIBLE : View.GONE}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/runningTime"
+                android:layout_margin="@dimen/std_margin"
+                android:textStyle="bold"
+                android:text="@string/voting_average"
+                tools:text="VotingAverageLabel"/>
+
+            <TextView
+                android:id="@+id/votingAverage"
+                style="@style/BlackStyle"
+                android:layout_width="0dp"
+                android:visibility="@{shouldShowUIComponents ? View.VISIBLE : View.GONE}"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/std_margin"
+                android:layout_marginTop="@dimen/std_short_margin"
+                android:layout_marginEnd="@dimen/std_margin"
+                android:layout_marginBottom="@dimen/std_margin"
+                android:text="@{Double.toString(item.voteAverage)}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/votingAverageLabel"
+                app:layout_constraintVertical_bias="0.0"
+                tools:text="votingAverage" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</layout>

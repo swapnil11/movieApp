@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Movies</string>
+    <string name="network_error">Network Error</string>
+    <string name="response_error">Something went wrong</string>
+    <string name="unauthorized">Unauthorized</string>
+    <string name="not_found">Not found</string>
+    <string name="internal_err">Internal Server Error</string>
+    <string name="svc_un_avail">Service Unavailable</string>
+    <string name="connection_error">Failed to connect</string>
+    <string name="timeout">Timeout</string>
+    <string name="description">description</string>
+    <string name="no_data">No Data</string>
+    <string name="malformed">Malformed Data</string>
+
+    <string name="voting_average">Voting Average</string>
+    <string name="running_time">%s minutes</string>
+
+    <string-array name="categories">
+        <item>Latest</item>
+        <item>Popular</item>
+        <item>Now Playing</item>
+        <item>Top Rated</item>
+        <item>Upcoming</item>
+    </string-array>
+</resources>
